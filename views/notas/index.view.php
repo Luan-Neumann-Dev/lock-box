@@ -33,7 +33,7 @@
                 <?php if (! session()->get('mostrar')) { ?>
                     disabled
                 <?php } ?>
-            class="textarea h-24 w-full" placeholder="Escreva aqui..."><?= $notaSelecionada->nota()?></textarea>
+            class="textarea h-24 w-full" placeholder="Escreva aqui..."><?= $notaSelecionada->nota() ?></textarea>
             <?php if (isset($validacoes['nota'])) { ?>
                 <div class="mt-1 text-xs text-error">
                     <?= $validacoes['nota'][0] ?>

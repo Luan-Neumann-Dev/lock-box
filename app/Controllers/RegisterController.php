@@ -16,7 +16,7 @@ class RegisterController
     {
         $validacao = Validacao::validar([
             'nome' => ['required'],
-            'email' => ['required', 'email', 'confirmed', 'unique:users'],
+            'email' => ['required', 'email', 'confirmed', 'unique:usuarios'],
             'senha' => ['required', 'min:8', 'max:30', 'strong'],
         ], request()->all());
 
@@ -27,7 +27,7 @@ class RegisterController
         $database = new Database(config('database'));
 
         $database->query(
-            query: 'insert into users (nome, email, password) values (:nome, :email, :senha)',
+            query: 'insert into usuarios (nome, email, senha) values (:nome, :email, :senha)',
             params: [
                 'nome' => request()->post('nome'),
                 'email' => request()->post('email'),

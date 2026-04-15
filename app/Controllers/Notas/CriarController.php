@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Notas;
 
+use App\Models\Nota;
 use Core\Validacao;
 
 class CriarController
@@ -25,7 +26,7 @@ class CriarController
         Nota::create([
             'usuario_id' => auth()->id,
             'titulo' => request()->post('titulo'),
-            'nota' => request()->post('nota'),
+            'nota' => encrypt(request()->post('nota')),
         ]);
 
         flash()->push('mensagem', 'Nota criada com sucesso!');

@@ -24,8 +24,7 @@ class IndexController
 
     private function getNotaSelecionada($notas)
     {
-        $id = request()->get('pesquisar', (count($notas) > 0 ? $notas[0]->id : null));
-
+        $id     = request()->get('id', (count($notas) > 0 ? $notas[0]->id : null));
         $filtro = array_filter($notas, fn ($n) => $n->id == $id);
 
         return array_pop($filtro);
