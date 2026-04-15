@@ -172,4 +172,4 @@ MIT License — see [LICENSE](LICENSE) for details.
  
 ---
  
-⭐ Achou interessante? Deixa uma estrela!
+⭐ Found this helpful? Give it a star!
