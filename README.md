@@ -1,7 +1,7 @@
 # LOCK BOX
- 
-> Aplicação web para armazenar notas pessoais com criptografia dupla de ponta a ponta — suas anotações nunca ficam expostas sem sua senha.
- 
+
+> A web app for storing personal notes with end-to-end double-layer encryption — your notes are never exposed without your password.
+
 [![PHP](https://img.shields.io/badge/PHP-8.1+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
 [![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -13,99 +13,99 @@
 ![Project Preview](https://github.com/user-attachments/assets/c6b808d2-0f83-488f-9b9d-2187999b7557)
 
 ---
- 
-## 🎯 Sobre
- 
-O **LockBox** é uma aplicação web de anotações seguras construída com PHP puro, seguindo o padrão MVC sem depender de nenhum framework. O foco do projeto é a **privacidade**: cada nota é criptografada com dupla camada (AES-256-CBC + HMAC SHA3-512) antes de ser salva no banco de dados.
- 
-O conteúdo das notas só pode ser visualizado após o usuário confirmar a senha da conta, e permanece mascarado com asteriscos em todos os outros momentos — mesmo que alguém tenha acesso direto ao banco de dados, os dados são ilegíveis sem as chaves de criptografia.
- 
-O projeto foi desenvolvido do zero para consolidar conceitos de roteamento, middlewares, sessões e segurança em PHP sem o auxílio de frameworks como Laravel ou Symfony.
- 
-## ✨ Funcionalidades
- 
-- 🔐 **Criptografia dupla** — Notas cifradas com AES-256-CBC e autenticadas via HMAC SHA3-512
-- 👁️ **Visualização protegida por senha** — O conteúdo só é revelado após reautenticação no momento da leitura
-- 📝 **CRUD completo de notas** — Criar, listar, pesquisar, editar e deletar anotações
-- 🔑 **Autenticação de usuários** — Registro e login com hash de senha (password_hash)
-- 🛡️ **Middlewares de rota** — Separação entre rotas públicas (guest) e protegidas (auth)
-- 🔍 **Busca por título** — Filtro de notas diretamente na listagem
- 
+
+## 🎯 About
+
+**LockBox** is a secure notes web application built with pure PHP, following the MVC pattern without relying on any framework. The project's core focus is **privacy**: every note is encrypted with a double layer (AES-256-CBC + HMAC SHA3-512) before being saved to the database.
+
+Note contents can only be viewed after the user re-confirms their account password, and remain masked with asterisks at all other times — even if someone gains direct access to the database, the data is unreadable without the encryption keys.
+
+The project was built from scratch to solidify concepts around routing, middlewares, session management, and security in PHP without the help of frameworks like Laravel or Symfony.
+
+## ✨ Key Features
+
+- 🔐 **Double-layer encryption** — Notes ciphered with AES-256-CBC and authenticated via HMAC SHA3-512
+- 👁️ **Password-gated viewing** — Content is only revealed after re-authentication at read time
+- 📝 **Full notes CRUD** — Create, list, search, edit and delete notes
+- 🔑 **User authentication** — Registration and login with secure password hashing
+- 🛡️ **Route middlewares** — Clean separation between public (guest) and protected (auth) routes
+- 🔍 **Title search** — Filter notes directly from the listing view
+
 ## 🛠️ Tech Stack
- 
+
 **Backend:**
-- PHP 8.1+ — Lógica da aplicação com MVC implementado do zero
-- SQLite — Banco de dados leve via PDO com prepared statements
-- OpenSSL — Criptografia AES-256-CBC das notas
-- Composer — Autoload PSR-4
- 
+- PHP 8.1+ — Application logic with MVC implemented from scratch
+- SQLite — Lightweight database via PDO with prepared statements
+- OpenSSL — AES-256-CBC note encryption
+- Composer — PSR-4 autoloading
+
 **Frontend:**
-- TailwindCSS + DaisyUI — Estilização e componentes de UI
-- PHP Views — Renderização server-side
- 
-**Ferramentas:**
+- TailwindCSS + DaisyUI — Styling and UI components
+- PHP Views — Server-side rendering
+
+**Tools:**
 - Laravel Pint — Code style (dev)
-- PHP Built-in Server — Desenvolvimento local
- 
+- PHP Built-in Server — Local development
+
 ## 🚀 Quick Start
- 
+
 ```bash
-# Clone o repositório
+# Clone the repository
 git clone https://github.com/yourusername/lock-box.git
 cd lock-box
- 
-# Instale as dependências
+
+# Install dependencies
 composer install
- 
-# Configure as variáveis de ambiente
+
+# Set up environment variables
 cp .env.example .env
-# Edite o .env com suas chaves de criptografia
- 
-# Inicie o servidor de desenvolvimento
+# Edit .env with your encryption keys
+
+# Start the development server
 php -S localhost:8000 -t public public/server.php
 ```
- 
-Acesse `http://localhost:8000`
- 
-## 📁 Estrutura do Projeto
- 
+
+Open `http://localhost:8000`
+
+## 📁 Project Structure
+
 ```
 lock-box/
-├── Core/                    # Núcleo do framework caseiro
-│   ├── Database.php        # Abstração PDO
-│   ├── Route.php           # Roteador HTTP
-│   ├── Validacao.php       # Engine de validação
-│   ├── Session.php         # Gerenciamento de sessão
-│   ├── Flash.php           # Mensagens flash
-│   └── functions.php       # Helpers globais (encrypt, decrypt, auth...)
+├── Core/                    # Custom mini-framework core
+│   ├── Database.php        # PDO abstraction
+│   ├── Route.php           # HTTP router
+│   ├── Validacao.php       # Validation engine
+│   ├── Session.php         # Session management
+│   ├── Flash.php           # Flash messages
+│   └── functions.php       # Global helpers (encrypt, decrypt, auth...)
 │
 ├── app/
-│   ├── Controllers/        # Controladores (Index, Login, Register, Notas/)
-│   ├── Middlewares/        # AuthMiddleware e GuestMiddleware
-│   └── Models/             # Nota.php e Usuario.php
+│   ├── Controllers/        # Controllers (Index, Login, Register, Notes/)
+│   ├── Middlewares/        # AuthMiddleware and GuestMiddleware
+│   └── Models/             # Note.php and User.php
 │
 ├── config/
-│   ├── config.php          # Configurações do banco e segurança
-│   └── routes.php          # Definição de todas as rotas
+│   ├── config.php          # Database and security config
+│   └── routes.php          # All route definitions
 │
-├── views/                  # Templates PHP
-│   ├── template/           # Layouts base (app e guest)
-│   ├── partials/           # Componentes reutilizáveis (navbar, search)
-│   └── notas/              # Views de CRUD de notas
+├── views/                  # PHP templates
+│   ├── template/           # Base layouts (app and guest)
+│   ├── partials/           # Reusable components (navbar, search)
+│   └── notas/              # Notes CRUD views
 │
 ├── database/
-│   └── database.sqlite     # Banco de dados SQLite
+│   └── database.sqlite     # SQLite database
 │
 └── public/
-    └── index.php           # Entry point da aplicação
+    └── index.php           # Application entry point
 ```
- 
-## 💡 Destaques Técnicos
- 
-### Criptografia em Dupla Camada
- 
-As notas são cifradas antes de qualquer escrita no banco de dados. O processo usa AES-256-CBC para a cifra principal e HMAC SHA3-512 para garantir a integridade dos dados — se a nota for adulterada no banco, a descriptografia falha silenciosamente.
- 
+
+## 💡 Technical Highlights
+
+### Double-Layer Encryption
+
+Notes are encrypted before any database write. The process uses AES-256-CBC for the primary cipher and HMAC SHA3-512 to guarantee data integrity — if a note is tampered with in the database, decryption fails silently.
+
 ```php
 function encrypt($data) {
     $method = 'aes-256-cbc';
@@ -115,55 +115,55 @@ function encrypt($data) {
     return base64_encode($iv . $second_encrypted . $first_encrypted);
 }
 ```
- 
-### Roteador MVC Sem Framework
- 
-O sistema de rotas suporta GET, POST, PUT e DELETE com encadeamento fluente e injeção de middleware por rota:
- 
+
+### Framework-Free MVC Router
+
+The routing system supports GET, POST, PUT and DELETE with fluent chaining and per-route middleware injection:
+
 ```php
 (new Route)
-    ->get('/notas', Notas\IndexController::class, AuthMiddleware::class)
-    ->post('/notas/criar', [Notas\CriarController::class, 'store'], AuthMiddleware::class)
-    ->put('/nota', Notas\AtualizarController::class, AuthMiddleware::class)
+    ->get('/notes', Notes\IndexController::class, AuthMiddleware::class)
+    ->post('/notes/create', [Notes\CreateController::class, 'store'], AuthMiddleware::class)
+    ->put('/note', Notes\UpdateController::class, AuthMiddleware::class)
     ->run();
 ```
- 
-### Visualização com Reautenticação
- 
-O conteúdo das notas é mascarado por padrão — exibido como `***` com o comprimento real do texto. Para revelar, o usuário precisa confirmar a senha, que é verificada via `password_verify()` e registrada na sessão com escopo limitado.
- 
-## 📚 O que Aprendi
- 
-**Técnico:**
-- Implementação de um mini-framework MVC em PHP puro com roteamento, middlewares e autoload PSR-4
-- Criptografia simétrica com AES-256-CBC e autenticação de mensagem com HMAC
-- Gerenciamento de sessão e controle de acesso por middleware de rota
-- Uso de PDO com prepared statements para prevenção de SQL Injection
- 
-**Boas práticas:**
-- Separação de responsabilidades entre Controllers, Models e Views sem acoplamento
-- Variáveis de ambiente para separar configurações sensíveis do código
-- Validação centralizada e reutilizável com suporte a múltiplas regras por campo
- 
+
+### Re-authentication-Gated Viewing
+
+Note content is masked by default — displayed as `***` preserving the actual text length. To reveal it, the user must confirm their password, which is verified via `password_verify()` and stored in a scoped session flag.
+
+## 📚 What I Learned
+
+**Technical Skills:**
+- Building a mini MVC framework in pure PHP with routing, middlewares, and PSR-4 autoloading
+- Symmetric encryption with AES-256-CBC and message authentication with HMAC
+- Session management and route-level access control via middlewares
+- PDO with prepared statements for SQL Injection prevention
+
+**Best Practices:**
+- Clean separation of concerns between Controllers, Models, and Views
+- Environment variables to keep sensitive configuration out of source code
+- Centralized, reusable validation engine with support for multiple rules per field
+
 ## 🗺️ Roadmap
- 
-- [ ] Suporte a múltiplos bancos de dados (MySQL/PostgreSQL)
-- [ ] Autenticação de dois fatores (2FA)
-- [ ] Exportação de notas em formato criptografado
-- [ ] API REST para acesso via mobile
-- [ ] Testes automatizados com PHPUnit
- 
-## 📝 Observações
- 
-- Projeto **educacional** focado em segurança e arquitetura PHP
-- As chaves de criptografia devem ser geradas de forma segura e nunca commitadas — use o `.env`
-- O banco SQLite incluso é apenas para demonstração
- 
-## 📄 Licença
- 
-MIT License — veja [LICENSE](LICENSE) para detalhes.
- 
-## 👤 Autor
+
+- [ ] Support for additional databases (MySQL / PostgreSQL)
+- [ ] Two-factor authentication (2FA)
+- [ ] Encrypted note export
+- [ ] REST API for mobile access
+- [ ] Automated tests with PHPUnit
+
+## 📝 Notes
+
+- This is an **educational** project focused on PHP security and architecture
+- Encryption keys must be securely generated and never committed — always use `.env`
+- The included SQLite database is for demonstration purposes only
+
+## 📄 License
+
+MIT License — see [LICENSE](LICENSE) for details.
+
+## 👤 Author
  
 **Luan Neumann**
 
