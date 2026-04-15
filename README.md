@@ -7,7 +7,10 @@
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![DaisyUI](https://img.shields.io/badge/DaisyUI-FF9903?style=for-the-badge&logo=daisyui&logoColor=white)](https://daisyui.com/)
 
-[!Project Preview](https://github.com/user-attachments/assets/8a3f1a9d-7618-419f-b3e6-6cd1ea2bde8f)
+![Project Preview](https://github.com/user-attachments/assets/8a3f1a9d-7618-419f-b3e6-6cd1ea2bde8f)
+![Project Preview](https://github.com/user-attachments/assets/8620a383-ecf9-4024-a424-2a2a6184fa7c)
+![Project Preview](https://github.com/user-attachments/assets/d66730b2-775f-4f69-9867-42d50ef8c945)
+![Project Preview](https://github.com/user-attachments/assets/c6b808d2-0f83-488f-9b9d-2187999b7557)
 
 ---
  
